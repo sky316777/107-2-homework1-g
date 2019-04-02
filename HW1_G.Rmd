@@ -192,10 +192,21 @@ $$E(\hat{\beta}_1)=E(E(\hat{\beta}_1|x))=\beta_1$$
   
   
   (c) 若考慮異質變異$V(\epsilon_i|x_i)=\sigma_i^2$，則條件變異數$V(\hat{\beta}_1|X)=\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}$。
-
+$$V(\hat{\beta_1}|x)=V(\bar{y_1}-\bar{y_0})|x)=V(\bar{y_1})+V(\bar{y_0})-2cov(\bar{y_1},\bar{y_0})=\frac{\sigma_1^2}{n_1}+\frac{\sigma_0^2}{n_0}$$
 
 ## 2.3 三明治表示式
 線性迴歸模型
 $Y=X\beta+\epsilon$
 的OLS估計式$\hat{\beta}=(X'X)^{-1}(X'Y)$。條件在已知$X$下，令$V(\epsilon|X)=\Sigma$。請證明$V(\hat{\beta}|X)=(X'X)^{-1}\Sigma (X'X)$，具有三明治形式（即可表示成$BMB'$的矩陣相乘形式）。
 
+$V(\hat{\beta}|X)=E([\hat{\beta}-E(\hat{\beta}|X)][\hat{\beta}-E(\hat{\beta}|X)])$
+其中$\hat{\beta}=(X'X)^{-1}(X'Y)=(X'X)^{-1}X'(X\beta+\epsilon)$
+    $=(X'X)^{-1}X'X\beta+(X'X)^{-1}X'\epsilon$
+  ->$E(\hat{\beta})=\beta$
+
+ $V(\hat{\beta}|X)=E([(X'X)^{-1}X'(X\beta+\epsilon)-\beta][(X'X)^{-1}X'(X\beta+\epsilon)-\beta]')$
+ $=E[(X'X)^{-1}X\epsilon][(X'X)^{-1}X\epsilon]'$
+ $=E[(x'x)^{-1}x\epsilon\epsilon'x'(x'x)^{-1}]$
+ $=(x'x)^{-1}xE(\epsilon\epsilon')x'(x'x)^{-1}$
+ $=(x'x)^{-1}xV(\epsilon|x)x'(x'x)^{-1}$
+ $=(x'x)^{-1}\Sigma x'(x'x)^{-1}$
